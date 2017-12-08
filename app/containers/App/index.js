@@ -12,14 +12,16 @@
  */
 
 import React from "react";
-import SidebarNavigation from "containers/Layouts/SidebarNavigation";
+import withProgressBar from 'components/ProgressBar';
 
-export default class App extends React.PureComponent {
+class App extends React.PureComponent {
   render() {
     return (
-      <SidebarNavigation>
+      <main style={{minHeight: "100%", width: "100%", position: "relative", display: "block"}}>
         {React.Children.toArray(this.props.children)}
-      </SidebarNavigation>
+      </main>
     );
   }
 }
+
+export default withProgressBar(App);
