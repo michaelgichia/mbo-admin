@@ -14,7 +14,6 @@ import { IntlProvider } from "react-intl";
 export class LanguageProvider extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
   render() {
-    console.log({props: this.props})
     return (
       <IntlProvider
         locale={this.props.locale}
