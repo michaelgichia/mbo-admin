@@ -37,8 +37,9 @@ export default function createRoutes(store) {
     }, {
       path: "/stores",
       component: SidebarNavigation,
-      childRoutes: [
-        {
+      childRoutes: []
+
+    }, {
           path: '/login',
           name: 'login',
           getComponent(nextState, cb) {
@@ -56,8 +57,6 @@ export default function createRoutes(store) {
 
             importModules.catch(errorLoading);
           },
-        }
-      ]
     }, {
       path: '/register',
       name: 'register',
