@@ -74,6 +74,24 @@ export default function createRoutes(store) {
 
             importModules.catch(errorLoading);
           },
+        }, {
+          path: '/banner',
+          name: 'bannerPage',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/BannerPage/reducer'),
+              import('containers/BannerPage'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('bannerPage', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
         }
       ]
     }, {
