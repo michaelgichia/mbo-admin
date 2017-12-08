@@ -7,6 +7,7 @@
 import React, { PropTypes } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import { Link } from "react-router";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
 import "!!style-loader!css-loader!./login.css";
 
@@ -72,9 +73,9 @@ export class Login extends React.Component {
                 valuePropName: "checked",
                 initialValue: true
               })(<Checkbox>Remember me</Checkbox>)}
-              <a className="login-form-forgot" href="">
+              <Link className="login-form-forgot" href="">
                 Forgot password
-              </a>
+              </Link>
               <Button
                 type="primary"
                 size="large"
@@ -83,7 +84,7 @@ export class Login extends React.Component {
               >
                 Sign in
               </Button>
-              Or <a href="">register now!</a>
+              Or <Link to="/register">register now!</Link>
             </FormItem>
           </Form>
         </div>
