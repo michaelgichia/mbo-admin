@@ -75,18 +75,36 @@ export default function createRoutes(store) {
             importModules.catch(errorLoading);
           },
         }, {
-          path: '/banner',
-          name: 'bannerPage',
+          path: '/banner/create',
+          name: 'bannerCreate',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
-              import('containers/BannerPage/reducer'),
-              import('containers/BannerPage'),
+              import('containers/Banner/Create/reducer'),
+              import('containers/Banner/Create'),
             ]);
 
             const renderRoute = loadModule(cb);
 
             importModules.then(([reducer, component]) => {
-              injectReducer('bannerPage', reducer.default);
+              injectReducer('bannerCreate', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
+        }, {
+          path: '/banner/view',
+          name: 'bannerView',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Banner/View/reducer'),
+              import('containers/Banner/View'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('bannerView', reducer.default);
               renderRoute(component);
             });
 

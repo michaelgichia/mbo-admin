@@ -1,6 +1,6 @@
 /*
  *
- * BannerPage actions
+ * Create Banner actions
  *
  */
 

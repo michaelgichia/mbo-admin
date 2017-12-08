@@ -1,6 +1,6 @@
 /*
  *
- * BannerPage reducer
+ * View reducer
  *
  */
 
@@ -10,7 +10,7 @@ import {
 
 const initialState = {};
 
-function bannerPageReducer(state = initialState, action) {
+function viewReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -19,4 +19,4 @@ function bannerPageReducer(state = initialState, action) {
   }
 }
 
-export default bannerPageReducer;
+export default viewReducer;

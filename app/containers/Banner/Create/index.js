@@ -1,6 +1,6 @@
 /*
  *
- * BannerPage
+ * Create Banner
  *
  */
 
@@ -30,7 +30,7 @@ const formTailLayout = {
   wrapperCol: { span: 24 }
 };
 
-export class BannerPage extends React.Component {
+export class Create extends React.Component {
   state = {
     checkNick: false
   };
@@ -75,7 +75,7 @@ export class BannerPage extends React.Component {
     return (
       <div>
         <div style={{ marginBottom: 32 }}>
-          <Card title="Banner Page">
+          <Card title="Banner">
             <div
               style={{
                 fontSize: 16,
@@ -83,7 +83,7 @@ export class BannerPage extends React.Component {
                 marginBottom: 16
               }}
             >
-              <p>Banners</p>
+              <p>Create banners</p>
             </div>
           </Card>
         </div>
@@ -132,7 +132,7 @@ export class BannerPage extends React.Component {
   }
 }
 
-BannerPage.propTypes = {
+Create.propTypes = {
   // dispatch: PropTypes.func.isRequired,
 };
 
@@ -142,5 +142,5 @@ BannerPage.propTypes = {
 //   dispatch
 // });
 
-// export default connect(mapStateToProps, mapDispatchToProps)(BannerPage);
-export default compose(Form.create())(BannerPage);
+// export default connect(mapStateToProps, mapDispatchToProps)(Create);
+export default compose(Form.create())(Create);
