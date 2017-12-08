@@ -37,8 +37,63 @@ export default function createRoutes(store) {
     }, {
       path: "/stores",
       component: SidebarNavigation,
-      childRoutes: []
+      childRoutes: [
+        {
+          path: '/category/create',
+          name: 'create',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Category/Create/reducer'),
+              import('containers/Category/Create'),
+            ]);
 
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('create', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
+        }, {
+          path: '/category/view',
+          name: 'view',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Category/View/reducer'),
+              import('containers/Category/View'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('view', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
+        }, {
+          path: '/category/edit',
+          name: 'edit',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Category/Edit/reducer'),
+              import('containers/Category/Edit'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('edit', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
+        }
+      ]
     }, {
           path: '/login',
           name: 'login',
@@ -93,7 +148,7 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    },  {
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
