@@ -1,6 +1,6 @@
 /*
  *
- * View actions
+ * SubCategory actions
  *
  */
 

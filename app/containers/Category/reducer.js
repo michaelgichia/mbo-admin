@@ -1,6 +1,6 @@
 /*
  *
- * View reducer
+ * Category reducer
  *
  */
 
@@ -10,7 +10,7 @@ import {
 
 const initialState = {};
 
-function viewReducer(state = initialState, action) {
+function categoryReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -19,4 +19,4 @@ function viewReducer(state = initialState, action) {
   }
 }
 
-export default viewReducer;
+export default categoryReducer;

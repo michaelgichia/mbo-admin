@@ -1,6 +1,6 @@
 /*
  *
- * Create actions
+ * Category actions
  *
  */
 

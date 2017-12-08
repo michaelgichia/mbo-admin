@@ -1,6 +1,6 @@
 /*
  *
- * Edit reducer
+ * SubCategory reducer
  *
  */
 
@@ -10,7 +10,7 @@ import {
 
 const initialState = {};
 
-function editReducer(state = initialState, action) {
+function subCategoryReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -19,4 +19,4 @@ function editReducer(state = initialState, action) {
   }
 }
 
-export default editReducer;
+export default subCategoryReducer;

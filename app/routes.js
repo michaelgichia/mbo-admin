@@ -43,8 +43,8 @@ export default function createRoutes(store) {
           name: 'create',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
-              import('containers/Category/Create/reducer'),
-              import('containers/Category/Create'),
+              import('containers/Category/reducer'),
+              import('containers/Category'),
             ]);
 
             const renderRoute = loadModule(cb);
@@ -57,36 +57,18 @@ export default function createRoutes(store) {
             importModules.catch(errorLoading);
           },
         }, {
-          path: '/category/view',
-          name: 'view',
+          path: '/subcategory',
+          name: 'subCategory',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
-              import('containers/Category/View/reducer'),
-              import('containers/Category/View'),
+              import('containers/SubCategory/reducer'),
+              import('containers/SubCategory'),
             ]);
 
             const renderRoute = loadModule(cb);
 
             importModules.then(([reducer, component]) => {
-              injectReducer('view', reducer.default);
-              renderRoute(component);
-            });
-
-            importModules.catch(errorLoading);
-          },
-        }, {
-          path: '/category/edit',
-          name: 'edit',
-          getComponent(nextState, cb) {
-            const importModules = Promise.all([
-              import('containers/Category/Edit/reducer'),
-              import('containers/Category/Edit'),
-            ]);
-
-            const renderRoute = loadModule(cb);
-
-            importModules.then(([reducer, component]) => {
-              injectReducer('edit', reducer.default);
+              injectReducer('subCategory', reducer.default);
               renderRoute(component);
             });
 
