@@ -110,6 +110,24 @@ export default function createRoutes(store) {
 
             importModules.catch(errorLoading);
           },
+        }, {
+          path: '/banner/edit',
+          name: 'bannerEdit',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Banner/Edit/reducer'),
+              import('containers/Banner/Edit'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('bannerEdit', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
         }
       ]
     }, {
