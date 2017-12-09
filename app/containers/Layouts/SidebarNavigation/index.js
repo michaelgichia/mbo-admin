@@ -7,7 +7,7 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
-import { Layout, Menu, Icon } from "antd";
+import { Layout, Menu, Icon, Button } from "antd";
 import "!!style-loader!css-loader!./SidebarNavigation.css";
 
 const { Header, Sider, Content } = Layout;
@@ -33,6 +33,7 @@ export class SidebarNavigation extends React.Component {
         <Sider
           trigger={null}
           collapsible
+          width={250}
           collapsed={this.state.collapsed}
           className="style-sidebar"
         >
@@ -98,11 +99,19 @@ export class SidebarNavigation extends React.Component {
         </Sider>
         <Layout>
           <Header className="style-header">
-            <Icon
-              className="trigger"
-              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
-              onClick={this.toggle}
-            />
+          <Menu
+            mode="horizontal"
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px' }}
+          >
+            <Menu.Item key="3">
+              <Button type="primary" onClick={this.toggle} style={{ marginBottom: 16 }}>
+                <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
+              </Button>
+            </Menu.Item>
+            <Menu.Item key="1">nav 1</Menu.Item>
+            <Menu.Item key="2">nav 2</Menu.Item>
+          </Menu>
           </Header>
           <Content
             style={{
