@@ -52,3 +52,33 @@
 .table-item-header:hover {
   color: #1890ff;
 }
+
+#category-filter {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+#category-filter > li > button {
+  margin-left: 16px;
+  margin-right: 16px;
+  border-radius: 4px;
+  transition: all .5s;
+}
+
+#category-filter > li > button:focus,
+#category-filter > li > button:hover {
+  background-color: #f6f3ee;
+}
+
+.select-filters-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.select-filters {
+  padding-right: 16px;
+  padding-left: 32px;
+}

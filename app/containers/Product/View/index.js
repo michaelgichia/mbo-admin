@@ -8,8 +8,9 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
 import "!!style-loader!css-loader!./view.css";
+import { Table, Card, Divider, Icon, Button, List, Avatar, Modal, Select } from "antd";
 
-import { Table, Card, Divider, Icon, Button, List, Avatar, Modal } from "antd";
+const Option = Select.Option;
 
 const data = [
   {
@@ -78,9 +79,14 @@ const records = {
   filters: "",
   subCategory: "",
   trending: "",
-  avatar:"",
-  description:""
+  avatar: "",
+  description: ""
 };
+
+function handleChange(value) {
+  console.log(`selected ${value}`);
+}
+
 
 export class View extends React.Component {
   state = {
@@ -93,8 +99,8 @@ export class View extends React.Component {
       filters: "",
       subCategory: "",
       trending: "",
-      avatar:"",
-      description:""
+      avatar: "",
+      description: ""
     }
   };
 
@@ -130,57 +136,126 @@ export class View extends React.Component {
     ];
     return (
       <div>
-        <Card bordered={false}>
-          <div>Header</div>
-          <div>
-            <Table
-              columns={columns}
-              expandedRowRender={record => (
-                <div className="table-list-item">
-                  <div>
-                    <Link className="table-item-header">
-                      <header>{record.name}</header>
-                      <Icon type="link" />
-                    </Link>
-                    <div className="table-item-wrap">
-                      <span className="table-item-desc">
-                        {record.description}
-                      </span>
-                      <br />
-                      <span>Price: {record.price}</span>
-                      <Divider type="vertical" />
-                      <span>Quantity: {record.quantity}</span>
-                      <Divider type="vertical" />
-                      <span>Condition: {record.condition}</span>
-                      <Divider type="vertical" />
-                      <span>Sub-Category: {record.subCategory}</span>
-                      <Divider type="vertical" />
-                      <span>Filters: {record.filters}</span>
+        <div style={{ marginBottom: 32 }}>
+          <Card bordered={false}>
+            <div
+              style={{
+                display: "flex",
+                borderBottom: "1px dashed #e8e8e8",
+                paddingBottom: 16,
+                marginBottom: 16
+              }}
+            >
+              <label
+                htmlFor="category"
+                style={{ fontSize: 16 }}
+              >
+                Category of the:{" "}
+              </label>
+              <ul id="category-filter">
+                <li>
+                  <button>Clothing</button>
+                </li>
+                <li>
+                  <button>Electronics</button>
+                </li>
+                <li>
+                  <button>Shoes</button>
+                </li>
+                <li>
+                  <button>Watches</button>
+                </li>
+                <li>
+                  <button>Jewellery</button>
+                </li>
+                <li>
+                  <button>Health and Beauty</button>
+                </li>
+              </ul>
+            </div>
+            <div style={{display: "flex"}}>
+              <label
+                htmlFor="category"
+                style={{ fontSize: 16 }}
+              >
+                Other options :{" "}
+              </label>
+              <div className="select-filters-wrap">
+              <label className="select-filters">Trending:</label>
+              <Select defaultValue="all" style={{ width: 180 }} onChange={handleChange}>
+                <Option value="true">Yes</Option>
+                <Option value="false">No</Option>
+                <Option value="all">All</Option>
+              </Select>
+
+              <label className="select-filters">Sub-Category:</label>
+              <Select defaultValue="lucy" style={{ width: 180 }} onChange={handleChange}>
+                <Option value="jack">Men clothing</Option>
+                <Option value="lucy">Children clothing</Option>
+                <Option value="Yiminghe">Women clothing</Option>
+              </Select>
+
+              </div>
+            </div>
+          </Card>
+        </div>
+        <div>
+          <Card bordered={false}>
+            <div>
+              <Table
+                columns={columns}
+                expandedRowRender={record => (
+                  <div className="table-list-item">
+                    <div>
+                      <Link className="table-item-header">
+                        <header>{record.name}</header>
+                        <Icon type="link" />
+                      </Link>
+                      <div className="table-item-wrap">
+                        <span className="table-item-desc">
+                          {record.description}
+                        </span>
+                        <br />
+                        <span>Price: {record.price}</span>
+                        <Divider type="vertical" />
+                        <span>Quantity: {record.quantity}</span>
+                        <Divider type="vertical" />
+                        <span>Condition: {record.condition}</span>
+                        <Divider type="vertical" />
+                        <span>Sub-Category: {record.subCategory}</span>
+                        <Divider type="vertical" />
+                        <span>Filters: {record.filters}</span>
+                      </div>
+                    </div>
+                    <div className="table-item-img">
+                      <img src={record.avatar} alt={record.name} />
                     </div>
                   </div>
-                  <div className="table-item-img">
-                    <img src={record.avatar} alt={record.name} />
-                  </div>
+                )}
+                dataSource={data}
+              />
+            </div>
+            <div>
+              <Modal
+                width={768}
+                title={this.state.modal.name}
+                wrapClassName="vertical-center-modal"
+                visible={this.state.modal2Visible}
+                onOk={(e, record, modal2Visible) =>
+                  this.setModal2Visible(e, records, false)}
+                onCancel={(e, record, modal2Visible) =>
+                  this.setModal2Visible(e, records, false)}
+              >
+                <div className="table-item-img2">
+                  <img
+                    src={this.state.modal.avatar}
+                    alt={this.state.modal.name}
+                  />
                 </div>
-              )}
-              dataSource={data}
-            />
-          </div>
-          <div>
-            <Modal
-              width={768}
-              title={this.state.modal.name}
-              wrapClassName="vertical-center-modal"
-              visible={this.state.modal2Visible}
-              onOk={(e, record, modal2Visible) => this.setModal2Visible(e, records, false)}
-              onCancel={(e, record, modal2Visible) => this.setModal2Visible(e, records, false)}
-            >
-              <div className="table-item-img2">
-                <img src={this.state.modal.avatar} alt={this.state.modal.name} />
-              </div>
-            </Modal>
-          </div>
-        </Card>
+              </Modal>
+            </div>
+          </Card>
+        </div>
       </div>
     );
   }
