@@ -4,15 +4,16 @@
  *
  */
 
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React, { PropTypes } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router";
 import { Layout, Menu, Icon } from "antd";
-import "!!style-loader!css-loader!./SidebarNavigation.css"
+import "!!style-loader!css-loader!./SidebarNavigation.css";
 
 const { Header, Sider, Content } = Layout;
+const { SubMenu } = Menu;
 
-export class SidebarNavigation extends React.Component { 
+export class SidebarNavigation extends React.Component {
   state = {
     collapsed: false
   };
@@ -29,7 +30,12 @@ export class SidebarNavigation extends React.Component {
   render() {
     return (
       <Layout className="style-layout">
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed} className="style-sidebar">
+        <Sider
+          trigger={null}
+          collapsible
+          collapsed={this.state.collapsed}
+          className="style-sidebar"
+        >
           <div className="style-logo">
             <Link to="/">
               <img src="" alt="" />
@@ -37,18 +43,57 @@ export class SidebarNavigation extends React.Component {
             </Link>
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
-            </Menu.Item>
+            <SubMenu
+              key="sub2"
+              title={
+                <span>
+                  <Icon type="skin" />Products
+                </span>
+              }
+            >
+              <Menu.Item key="1">View Product</Menu.Item>
+              <Menu.Item key="2">Create Product</Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub1"
+              title={
+                <span>
+                  <Icon type="appstore" />Category
+                </span>
+              }
+            >
+              <Menu.Item key="6">View Category</Menu.Item>
+              <Menu.Item key="5">Create Category</Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub3"
+              title={
+                <span>
+                  <Icon type="picture" />Banner
+                </span>
+              }
+            >
+              <Menu.Item key="9">Create Banner</Menu.Item>
+              <Menu.Item key="10">View Banners</Menu.Item>
+            </SubMenu>
+            <SubMenu
+              key="sub6"
+              title={
+                <span>
+                  <Icon type="user" />Account
+                </span>
+              }
+            >
+              <Menu.Item key="19">
+                <Icon type="logout" /> Sign Out
+              </Menu.Item>
+              <Menu.Item key="110">
+                <Icon type="user-add" /> Create Account
+              </Menu.Item>
+              <Menu.Item key="120">
+                <Icon type="login" /> Sign In
+              </Menu.Item>
+            </SubMenu>
           </Menu>
         </Sider>
         <Layout>

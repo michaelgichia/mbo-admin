@@ -239,14 +239,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/editor',
-      name: 'editor',
-      getComponent(location, cb) {
-        import('components/Editor')
-          .then(loadModule(cb))
-          .catch(errorLoading);
-      },
-    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
