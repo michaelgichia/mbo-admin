@@ -128,26 +128,80 @@ export default function createRoutes(store) {
 
             importModules.catch(errorLoading);
           },
-        }
-      ]
-    }, {
-          path: '/login',
-          name: 'login',
+        }, {
+          path: '/product/edit',
+          name: 'productEdit',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
-              import('containers/User/Login/reducer'),
-              import('containers/User/Login'),
+              import('containers/Product/Edit/reducer'),
+              import('containers/Product/Edit'),
             ]);
 
             const renderRoute = loadModule(cb);
 
             importModules.then(([reducer, component]) => {
-              injectReducer('login', reducer.default);
+              injectReducer('productEdit', reducer.default);
               renderRoute(component);
             });
 
             importModules.catch(errorLoading);
           },
+        }, {
+          path: '/product/create',
+          name: 'productCreate',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Product/Create/reducer'),
+              import('containers/Product/Create'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('productCreate', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
+        }, {
+          path: '/product/view',
+          name: 'productView',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Product/View/reducer'),
+              import('containers/Product/View'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('productView', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
+        }
+      ]
+    }, {
+      path: '/login',
+      name: 'login',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          import('containers/User/Login/reducer'),
+          import('containers/User/Login'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('login', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
     }, {
       path: '/register',
       name: 'register',
@@ -183,6 +237,14 @@ export default function createRoutes(store) {
         });
 
         importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/editor',
+      name: 'editor',
+      getComponent(location, cb) {
+        import('components/Editor')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
     }, {
       path: '*',

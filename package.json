@@ -221,6 +221,7 @@
     "ip": "1.1.4",
     "lodash": "4.17.2",
     "minimist": "1.2.0",
+    "pell": "^0.7.0",
     "react": "15.4.1",
     "react-addons-update": "^15.6.2",
     "react-dom": "15.4.1",
