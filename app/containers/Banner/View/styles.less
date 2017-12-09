@@ -1,5 +1,56 @@
 @import "~antd/lib/style/themes/default.less";
-/*@import "../../utils/utils.less";*/
+
+.textOverflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+}
+
+.textOverflowMulti(@line: 3, @bg: #fff) {
+  overflow: hidden;
+  position: relative;
+  line-height: 1.5em;
+  max-height: @line * 1.5em;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    background: @bg;
+    content: '...';
+    padding: 0 1px;
+    position: absolute;
+    right: 14px;
+    bottom: 0;
+  }
+  &:after {
+    background: white;
+    content: '';
+    margin-top: 0.2em;
+    position: absolute;
+    right: 14px;
+    width: 1em;
+    height: 1em;
+  }
+}
+
+// mixins for clearfix
+// ------------------------
+.clearfix() {
+  zoom: 1;
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+}
+
 
 .listContent {
   .description {
@@ -62,4 +113,44 @@ a.listItemMetaTitle {
     width: 0;
     height: 1px;
   }
+}
+
+.ant-spin-container-wrap .ant-spin-nested-loading {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: auto 1px;
+}
+
+.ant-spin-container-wrap .ant-spin-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 2px);
+  height: 100%;
+  justify-content: space-between;
+}
+
+.ant-spin-container-wrap .ant-spin-container > * {
+  flex: 1 1 300px;
+  margin: 8px;
+  max-width: 350px;
+  margin-bottom: 32px;
+}
+
+.banners-filter-div1 {
+  display: flex;
+  align-items: center;
+}
+
+.banners-filter-div1 > * {
+  margin: 8px 16px;
+}
+
+.banners-filter-div2 {
+  font-size: 18px;
+  color: #343434;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed #e8e8e8;
 }

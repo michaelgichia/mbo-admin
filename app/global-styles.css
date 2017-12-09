@@ -27,3 +27,9 @@ ul, p {
   margin: 0;
   padding: 0;
 }
+
+.ant-card-head-title {
+  color: #343434 !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+}
