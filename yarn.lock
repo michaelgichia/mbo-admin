@@ -107,6 +107,12 @@ ansicolors@~0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/ansicolors/-/ansicolors-0.2.1.tgz#be089599097b74a5c9c4a84a0cdbcdb62bd87aef"
 
+antd-data-table@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/antd-data-table/-/antd-data-table-0.2.0.tgz#b27a9f7608d1a41236cd53fe23588e395e6a8218"
+  dependencies:
+    immutability-helper "^2.3.1"
+
 antd@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/antd/-/antd-3.0.0.tgz#53e16832b787ca59ba97a3627bbb1b1e2df3bb2e"
@@ -3834,6 +3840,12 @@ imagemin@^5.2.2:
     pify "^2.3.0"
     promise.pipe "^3.0.0"
     replace-ext "0.0.1"
+
+immutability-helper@^2.3.1:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/immutability-helper/-/immutability-helper-2.6.0.tgz#3e909d1baf915765a9624545198d04c55a80bdd7"
+  dependencies:
+    invariant "^2.2.0"
 
 immutable@^3.7.4:
   version "3.8.2"
