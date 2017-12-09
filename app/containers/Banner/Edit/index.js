@@ -74,7 +74,7 @@ export class Edit extends React.Component {
     return (
       <div>
         <div style={{ marginBottom: 32 }}>
-          <Card title="Banner">
+          <Card title="Edit banner">
             <div
               style={{
                 fontSize: 16,
@@ -82,7 +82,7 @@ export class Edit extends React.Component {
                 marginBottom: 16
               }}
             >
-              <p>Create banners</p>
+              <p>Edit banner, change if it is active or not.</p>
             </div>
           </Card>
         </div>
