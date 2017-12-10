@@ -8,9 +8,10 @@ import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router";
 import "!!style-loader!css-loader!./view.css";
-import { Table, Card, Divider, Icon, Button, List, Avatar, Modal, Select } from "antd";
+import { Table, Card, Divider, Icon, Input, Button, List, Avatar, Modal, Select } from "antd";
 
 const Option = Select.Option;
+const Search = Input.Search;
 
 const data = [
   {
@@ -136,6 +137,12 @@ export class View extends React.Component {
     ];
     return (
       <div>
+        <div className="search-wrap-input">
+          <Card bordered={false} style={{paddingTop: 16, paddingBottom: 16}}>
+            <Search  style={{ width: 500 }} placeholder="Search for products" enterButton="Search" size="large" />
+          </Card>
+        </div>
+
         <div style={{ marginBottom: 32 }}>
           <Card bordered={false}>
             <div
