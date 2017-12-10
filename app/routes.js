@@ -20,15 +20,17 @@ export default function createRoutes(store) {
   return [
     {
       path: '/',
-      name: 'home',
+      name: 'login',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/HomePage'),
+          import('containers/User/Login/reducer'),
+          import('containers/User/Login'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component]) => {
+        importModules.then(([reducer, component]) => {
+          injectReducer('login', reducer.default);
           renderRoute(component);
         });
 
@@ -39,8 +41,8 @@ export default function createRoutes(store) {
       component: SidebarNavigation,
       childRoutes: [
         {
-          path: '/category/create',
-          name: 'create',
+          path: '/category',
+          name: 'category',
           getComponent(nextState, cb) {
             const importModules = Promise.all([
               import('containers/Category/reducer'),
@@ -50,7 +52,7 @@ export default function createRoutes(store) {
             const renderRoute = loadModule(cb);
 
             importModules.then(([reducer, component]) => {
-              injectReducer('create', reducer.default);
+              injectReducer('category', reducer.default);
               renderRoute(component);
             });
 
@@ -75,6 +77,24 @@ export default function createRoutes(store) {
             importModules.catch(errorLoading);
           },
         }, {
+          path: '/banner',
+          name: 'bannerView',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Banner/View/reducer'),
+              import('containers/Banner/View'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('bannerView', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
+        }, {
           path: '/banner/create',
           name: 'bannerCreate',
           getComponent(nextState, cb) {
@@ -93,24 +113,6 @@ export default function createRoutes(store) {
             importModules.catch(errorLoading);
           },
         }, {
-          path: '/banner/view',
-          name: 'bannerView',
-          getComponent(nextState, cb) {
-            const importModules = Promise.all([
-              import('containers/Banner/View/reducer'),
-              import('containers/Banner/View'),
-            ]);
-
-            const renderRoute = loadModule(cb);
-
-            importModules.then(([reducer, component]) => {
-              injectReducer('bannerView', reducer.default);
-              renderRoute(component);
-            });
-
-            importModules.catch(errorLoading);
-          },
-        }, {
           path: '/banner/edit',
           name: 'bannerEdit',
           getComponent(nextState, cb) {
@@ -123,6 +125,24 @@ export default function createRoutes(store) {
 
             importModules.then(([reducer, component]) => {
               injectReducer('bannerEdit', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
+        }, {
+          path: '/product',
+          name: 'productView',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Product/View/reducer'),
+              import('containers/Product/View'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('productView', reducer.default);
               renderRoute(component);
             });
 
@@ -164,44 +184,8 @@ export default function createRoutes(store) {
 
             importModules.catch(errorLoading);
           },
-        }, {
-          path: '/product/view',
-          name: 'productView',
-          getComponent(nextState, cb) {
-            const importModules = Promise.all([
-              import('containers/Product/View/reducer'),
-              import('containers/Product/View'),
-            ]);
-
-            const renderRoute = loadModule(cb);
-
-            importModules.then(([reducer, component]) => {
-              injectReducer('productView', reducer.default);
-              renderRoute(component);
-            });
-
-            importModules.catch(errorLoading);
-          },
         }
       ]
-    }, {
-      path: '/login',
-      name: 'login',
-      getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/User/Login/reducer'),
-          import('containers/User/Login'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, component]) => {
-          injectReducer('login', reducer.default);
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
-      },
     }, {
       path: '/register',
       name: 'register',
