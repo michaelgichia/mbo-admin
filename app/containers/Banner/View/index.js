@@ -82,7 +82,7 @@ export class View extends React.Component {
     return (
       <div>
         <div style={{ marginBottom: 32 }}>
-          <Card title="Banners view">
+          <Card title="Banners view" bordered={false}>
             <div
               style={{
                 fontSize: 16,

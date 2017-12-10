@@ -57,7 +57,7 @@ export class Create extends React.Component {
     inputValue: ""
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
@@ -66,7 +66,7 @@ export class Create extends React.Component {
     });
   };
 
-  normFile = (e) => {
+  normFile = e => {
     console.log("Upload event:", e);
     if (Array.isArray(e)) {
       return e;
@@ -74,8 +74,8 @@ export class Create extends React.Component {
     return e && e.fileList;
   };
 
-  handleClose = (removedTag) => {
-    const tags = this.state.tags.filter((tag) => tag !== removedTag);
+  handleClose = removedTag => {
+    const tags = this.state.tags.filter(tag => tag !== removedTag);
     console.log(tags);
     this.setState({ tags });
   };
@@ -84,7 +84,7 @@ export class Create extends React.Component {
     this.setState({ inputVisible: true }, () => this.input.focus());
   };
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     this.setState({ inputValue: e.target.value });
   };
 
@@ -103,7 +103,7 @@ export class Create extends React.Component {
     });
   };
 
-  saveInputRef = (input) => (this.input = input);
+  saveInputRef = input => (this.input = input);
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -119,179 +119,202 @@ export class Create extends React.Component {
     };
     return (
       <div>
-        <div style={{marginBottom: 32}}>
-          <Card title="Create product">
+        <div style={{ marginBottom: 32 }}>
+          <Card
+            title={
+              <span style={{ paddingTop: 16, display: "block", fontSize: 24 }}>
+                Create product
+              </span>
+            }
+            bordered={false}
+          >
             <div
               style={{
                 fontSize: 16,
-                color: '#807d7d',
-                marginBottom: 16,
+                color: "#807d7d",
+                marginBottom: 16
               }}
             >
-            <p>Create a product that stands as a single entity.</p>
+              <p>Create a product that stands as a single entity.</p>
             </div>
           </Card>
         </div>
-      <Card title="Create product" style={{marginTop: 50,}}>
-      <Form onSubmit={this.handleSubmit}>
-        <FormItem {...formItemLayout} label={fieldLabels.name}>
-          {getFieldDecorator("name", {
-            rules: [
-              {
-                required: true,
-                message: "Please enter the name of the product."
-              }
-            ]
-          })(
-            <Input
-              size="large"
-              placeholder="Please enter the name of the product."
-            />
-          )}
-        </FormItem>
+        <Card
+          title={
+            <span style={{ paddingTop: 16, display: "block", fontSize: 24 }}>
+              Create product
+            </span>
+          }
+          style={{ marginTop: 50 }}
+          bordered={false}
+        >
+          <Form onSubmit={this.handleSubmit}>
+            <FormItem {...formItemLayout} label={fieldLabels.name}>
+              {getFieldDecorator("name", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Please enter the name of the product."
+                  }
+                ]
+              })(
+                <Input
+                  size="large"
+                  placeholder="Please enter the name of the product."
+                />
+              )}
+            </FormItem>
 
-        <FormItem {...formItemLayout} label={fieldLabels.description}>
-          <Editor />
-        </FormItem>
+            <FormItem {...formItemLayout} label={fieldLabels.description}>
+              <Editor />
+            </FormItem>
 
-        <FormItem {...formItemLayout} label="Image / Images">
-          <div className="dropbox">
-            {getFieldDecorator("dragger", {
-              valuePropName: "fileList",
-              getValueFromEvent: this.normFile
-            })(
-              <Upload.Dragger name="files" action="/upload.do">
-                <p className="ant-upload-drag-icon">
-                  <Icon type="inbox" />
-                </p>
-                <p className="ant-upload-text">
-                  Click or drag file to this area to upload
-                </p>
-                <br />
-                <p className="ant-upload-hint">
-                  Support for a single or bulk upload.
-                </p>
-                <br />
-                <p className="ant-upload-hint">
-                  Please a upload more photos if the products have more photos.
-                </p>
-              </Upload.Dragger>
-            )}
-          </div>
-        </FormItem>
+            <FormItem {...formItemLayout} label="Image / Images">
+              <div className="dropbox">
+                {getFieldDecorator("dragger", {
+                  valuePropName: "fileList",
+                  getValueFromEvent: this.normFile
+                })(
+                  <Upload.Dragger name="files" action="/upload.do">
+                    <p className="ant-upload-drag-icon">
+                      <Icon type="inbox" />
+                    </p>
+                    <p className="ant-upload-text">
+                      Click or drag file to this area to upload
+                    </p>
+                    <br />
+                    <p className="ant-upload-hint">
+                      Support for a single or bulk upload.
+                    </p>
+                    <br />
+                    <p className="ant-upload-hint">
+                      Please a upload more photos if the products have more
+                      photos.
+                    </p>
+                  </Upload.Dragger>
+                )}
+              </div>
+            </FormItem>
 
-        <FormItem {...formItemLayout} label="Sub-Category" hasFeedback>
-          {getFieldDecorator("select", {
-            rules: [
-              { required: true, message: "Please select your Sub-Category!" }
-            ]
-          })(
-            <Select size="large" placeholder="Please select a Sub-Category">
-              <Option value="china">Electronics</Option>
-              <Option value="use">Clothing</Option>
-            </Select>
-          )}
-        </FormItem>
+            <FormItem {...formItemLayout} label="Sub-Category" hasFeedback>
+              {getFieldDecorator("select", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Please select your Sub-Category!"
+                  }
+                ]
+              })(
+                <Select size="large" placeholder="Please select a Sub-Category">
+                  <Option value="china">Electronics</Option>
+                  <Option value="use">Clothing</Option>
+                </Select>
+              )}
+            </FormItem>
 
-        <FormItem {...formItemLayout} label={fieldLabels.condition}>
-          {getFieldDecorator("condition", {
-            rules: [{ message: "Please enter the product condition." }]
-          })(
-            <Input
-              size="large"
-              placeholder="Please enter the product condition."
-            />
-          )}
-        </FormItem>
+            <FormItem {...formItemLayout} label={fieldLabels.condition}>
+              {getFieldDecorator("condition", {
+                rules: [{ message: "Please enter the product condition." }]
+              })(
+                <Input
+                  size="large"
+                  placeholder="Please enter the product condition."
+                />
+              )}
+            </FormItem>
 
-        <FormItem {...formItemLayout} label={fieldLabels.price}>
-          {getFieldDecorator("price", {
-            rules: [
-              { required: true, message: "Please enter the product price." }
-            ]
-          })(
-            <InputNumber
-              size="large"
-              min={1}
-              max={10000000}
-              setFieldsValue={1}
-              onChange={onInputnumberChange}
-            />
-          )}
-        </FormItem>
+            <FormItem {...formItemLayout} label={fieldLabels.price}>
+              {getFieldDecorator("price", {
+                rules: [
+                  { required: true, message: "Please enter the product price." }
+                ]
+              })(
+                <InputNumber
+                  size="large"
+                  min={1}
+                  max={10000}
+                  setFieldsValue={1}
+                  onChange={onInputnumberChange}
+                />
+              )}
+            </FormItem>
 
-        <FormItem {...formItemLayout} label={fieldLabels.quantity}>
-          {getFieldDecorator("quantity", {
-            rules: [{ message: "Please enter the product quantity." }]
-          })(
-            <InputNumber
-              size="large"
-              min={1}
-              max={10000000}
-              setFieldsValue={1}
-              onChange={onInputnumberChange}
-            />
-          )}
-        </FormItem>
+            <FormItem {...formItemLayout} label={fieldLabels.quantity}>
+              {getFieldDecorator("quantity", {
+                rules: [{ message: "Please enter the product quantity." }]
+              })(
+                <InputNumber
+                  size="large"
+                  min={1}
+                  max={10000000}
+                  setFieldsValue={1}
+                  onChange={onInputnumberChange}
+                />
+              )}
+            </FormItem>
 
-        <FormItem {...formItemLayout} label="Trending">
-          {getFieldDecorator("switch", { valuePropName: "checked" })(
-            <Switch />
-          )}
-        </FormItem>
+            <FormItem {...formItemLayout} label="Trending">
+              {getFieldDecorator("switch", { valuePropName: "checked" })(
+                <Switch />
+              )}
+            </FormItem>
 
-        <FormItem {...formItemLayout} label="Filter">
-          {tags.map((tag, index) => {
-            const isLongTag = tag.length > 20;
-            const tagElem = (
-              <Tag key={tag} closable afterClose={() => this.handleClose(tag)}>
-                {isLongTag ? `${tag.slice(0, 20)}...` : tag}
-              </Tag>
-            );
-            return isLongTag ? (
-              <Tooltip title={tag} key={tag}>
-                {tagElem}
-              </Tooltip>
-            ) : (
-              tagElem
-            );
-          })}
-          {inputVisible && (
-            <Input
-              ref={this.saveInputRef}
-              type="text"
-              size="small"
-              placeholder="Add a product filter"
-              style={{ width: 200, height: 40 }}
-              value={inputValue}
-              onChange={this.handleInputChange}
-              onBlur={this.handleInputConfirm}
-              onPressEnter={this.handleInputConfirm}
-            />
-          )}
-          {!inputVisible && (
-            <Tag
-              onClick={this.showInput}
-              style={{
-                background: "#fff",
-                borderStyle: "solid",
-                padding: "10px 14px",
-                height: 40
-              }}
-            >
-              <Icon type="plus" /> Edit/delete/add new filter
-            </Tag>
-          )}
-        </FormItem>
+            <FormItem {...formItemLayout} label="Filter">
+              {tags.map((tag, index) => {
+                const isLongTag = tag.length > 20;
+                const tagElem = (
+                  <Tag
+                    key={tag}
+                    closable
+                    afterClose={() => this.handleClose(tag)}
+                  >
+                    {isLongTag ? `${tag.slice(0, 20)}...` : tag}
+                  </Tag>
+                );
+                return isLongTag ? (
+                  <Tooltip title={tag} key={tag}>
+                    {tagElem}
+                  </Tooltip>
+                ) : (
+                  tagElem
+                );
+              })}
+              {inputVisible && (
+                <Input
+                  ref={this.saveInputRef}
+                  type="text"
+                  size="small"
+                  placeholder="Add a product filter"
+                  style={{ width: 200, height: 40 }}
+                  value={inputValue}
+                  onChange={this.handleInputChange}
+                  onBlur={this.handleInputConfirm}
+                  onPressEnter={this.handleInputConfirm}
+                />
+              )}
+              {!inputVisible && (
+                <Tag
+                  onClick={this.showInput}
+                  style={{
+                    background: "#fff",
+                    borderStyle: "solid",
+                    padding: "10px 14px",
+                    height: 40
+                  }}
+                >
+                  <Icon type="plus" /> Edit/delete/add new filter
+                </Tag>
+              )}
+            </FormItem>
 
-        <FormItem wrapperCol={{ span: 12, offset: 6 }}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </FormItem>
-      </Form>
-      </Card>
-         </div>
+            <FormItem wrapperCol={{ span: 12, offset: 6 }}>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </FormItem>
+          </Form>
+        </Card>
+      </div>
     );
   }
 }

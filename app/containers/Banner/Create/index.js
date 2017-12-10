@@ -75,7 +75,7 @@ export class Create extends React.Component {
     return (
       <div>
         <div style={{ marginBottom: 32 }}>
-          <Card title="Banner">
+          <Card title="Banner" bordered={false}>
             <div
               style={{
                 fontSize: 16,

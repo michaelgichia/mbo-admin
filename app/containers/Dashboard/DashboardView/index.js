@@ -35,7 +35,7 @@ export class DashboardView extends React.Component {
           <button className="dashboard-card-bt-cats"><span>Create Category</span></button>
           <button className="dashboard-card-bt-ban"><span>Create Banner</span></button>
         </div>
-      
+
         <div className="dashboard-view-panel">
           <div className="dashboard-card">
             <div className="dashboard-card-head">

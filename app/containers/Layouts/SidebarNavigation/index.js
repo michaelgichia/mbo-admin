@@ -6,7 +6,7 @@
 
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router";
+import { Link, browserHistory } from "react-router";
 import { Layout, Menu, Icon, Button } from "antd";
 import "!!style-loader!css-loader!./SidebarNavigation.css";
 
@@ -44,7 +44,16 @@ export class SidebarNavigation extends React.Component {
             </Link>
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-            <Menu.Item key="21"><Icon type="dashboard" /> Dashboard</Menu.Item>
+            <Menu.Item key="21">
+              <button onClick={() => browserHistory.push("/stores/dashboard")}>
+                <Icon type="dashboard" />Dashboard
+              </button>
+            </Menu.Item>
+            <Menu.Item key="6">
+              <button onClick={() => browserHistory.push("/category")}>
+                <Icon type="appstore" />Category
+              </button>
+            </Menu.Item>
             <SubMenu
               key="sub2"
               title={
@@ -53,19 +62,16 @@ export class SidebarNavigation extends React.Component {
                 </span>
               }
             >
-              <Menu.Item key="1">View Product</Menu.Item>
-              <Menu.Item key="2">Create Product</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub1"
-              title={
-                <span>
-                  <Icon type="appstore" />Category
-                </span>
-              }
-            >
-              <Menu.Item key="6">View Category</Menu.Item>
-              <Menu.Item key="5">Create Category</Menu.Item>
+              <Menu.Item key="1">
+                <button onClick={() => browserHistory.push("/product")}>
+                  View Product
+                </button>
+              </Menu.Item>
+              <Menu.Item key="2">
+                <button onClick={() => browserHistory.push("/product/create")}>
+                  Create Product
+                </button>
+              </Menu.Item>
             </SubMenu>
             <SubMenu
               key="sub3"
@@ -75,8 +81,16 @@ export class SidebarNavigation extends React.Component {
                 </span>
               }
             >
-              <Menu.Item key="9">Create Banner</Menu.Item>
-              <Menu.Item key="10">View Banners</Menu.Item>
+              <Menu.Item key="10">
+                <button onClick={() => browserHistory.push("/banner")}>
+                  View Banners
+                </button>
+              </Menu.Item>
+              <Menu.Item key="9">
+                <button onClick={() => browserHistory.push("/banner/create")}>
+                  Create Banner
+                </button>
+              </Menu.Item>
             </SubMenu>
             <SubMenu
               key="sub6"
@@ -87,23 +101,35 @@ export class SidebarNavigation extends React.Component {
               }
             >
               <Menu.Item key="19">
-                <Icon type="logout" /> Sign Out
+                <button onClick={() => browserHistory.push("/")}>
+                  <Icon type="logout" /> Sign Out
+                </button>
               </Menu.Item>
               <Menu.Item key="110">
-                <Icon type="user-add" /> Create Account
+                <button onClick={() => browserHistory.push("/register")}>
+                  <Icon type="user-add" /> Create Account
+                </button>
               </Menu.Item>
               <Menu.Item key="120">
-                <Icon type="login" /> Sign In
+                <button onClick={() => browserHistory.push("/")}>
+                  <Icon type="login" /> Sign In
+                </button>
               </Menu.Item>
             </SubMenu>
-            <Menu.Item key="22"><Icon type="global" /> MBO Site</Menu.Item>
+            <Menu.Item key="22">
+              <Icon type="global" /> Mbo site
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
           <Header className="style-header">
-          <Button type="primary" onClick={this.toggle} style={{ marginBottom: 16 }}>
-            <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-          </Button>
+            <Button
+              type="primary"
+              onClick={this.toggle}
+              style={{ marginBottom: 16 }}
+            >
+              <Icon type={this.state.collapsed ? "menu-unfold" : "menu-fold"} />
+            </Button>
           </Header>
           <Content
             style={{

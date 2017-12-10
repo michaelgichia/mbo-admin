@@ -208,7 +208,7 @@ export class View extends React.Component {
         </div>
         <div>
           <Card bordered={false}>
-            <div>
+            <div style={{paddingTop: 32, paddingBottom: 32}}>
               <Table
                 columns={columns}
                 expandedRowRender={record => (
