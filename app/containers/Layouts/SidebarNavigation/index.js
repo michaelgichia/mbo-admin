@@ -33,17 +33,18 @@ export class SidebarNavigation extends React.Component {
         <Sider
           trigger={null}
           collapsible
-          width={250}
+          width={300}
           collapsed={this.state.collapsed}
           className="style-sidebar"
         >
           <div className="style-logo">
             <Link to="/">
               <img src="" alt="" />
-              <h1>MBO Admin</h1>
+              <h1>MBO ADMIN</h1>
             </Link>
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+            <Menu.Item key="21"><Icon type="dashboard" /> Dashboard</Menu.Item>
             <SubMenu
               key="sub2"
               title={
@@ -95,23 +96,14 @@ export class SidebarNavigation extends React.Component {
                 <Icon type="login" /> Sign In
               </Menu.Item>
             </SubMenu>
+            <Menu.Item key="22"><Icon type="global" /> MBO Site</Menu.Item>
           </Menu>
         </Sider>
         <Layout>
           <Header className="style-header">
-          <Menu
-            mode="horizontal"
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px' }}
-          >
-            <Menu.Item key="3">
-              <Button type="primary" onClick={this.toggle} style={{ marginBottom: 16 }}>
-                <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
-              </Button>
-            </Menu.Item>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-          </Menu>
+          <Button type="primary" onClick={this.toggle} style={{ marginBottom: 16 }}>
+            <Icon type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} />
+          </Button>
           </Header>
           <Content
             style={{

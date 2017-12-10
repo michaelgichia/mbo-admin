@@ -44,3 +44,7 @@
   margin: 0 0 0 12px;
   font-weight: 600;
 }
+
+.ant-menu-inline .ant-menu-item {
+  font-size: 16px !important;
+ }
