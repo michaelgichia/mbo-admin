@@ -184,6 +184,24 @@ export default function createRoutes(store) {
 
             importModules.catch(errorLoading);
           },
+        }, {
+          path: 'dashboard',
+          name: 'dashboardView',
+          getComponent(nextState, cb) {
+            const importModules = Promise.all([
+              import('containers/Dashboard/DashboardView/reducer'),
+              import('containers/Dashboard/DashboardView'),
+            ]);
+
+            const renderRoute = loadModule(cb);
+
+            importModules.then(([reducer, component]) => {
+              injectReducer('dashboardView', reducer.default);
+              renderRoute(component);
+            });
+
+            importModules.catch(errorLoading);
+          },
         }
       ]
     }, {

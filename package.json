@@ -233,6 +233,7 @@
     "react-router-scroll": "0.4.1",
     "redux": "3.6.0",
     "redux-saga": "0.14.0",
+    "reqwest": "^2.0.5",
     "reselect": "2.5.4",
     "sanitize.css": "4.1.0",
     "shortid": "^2.2.8",

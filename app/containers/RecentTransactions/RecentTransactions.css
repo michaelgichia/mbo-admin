@@ -1,0 +1,8 @@
+.table-operations {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.table-operations > *{
+  margin: 8px 16px;
+}
