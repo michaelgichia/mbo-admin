@@ -7,21 +7,18 @@
 import React, { PropTypes } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import {
-  Form,
-  Select,
-  Switch,
-  Button,
-  Upload,
-  InputNumber,
-  Input,
-  Icon,
-  Tag,
-  Tooltip,
-  Row,
-  Card,
-  Col
-} from "antd";
+import Form from 'antd/lib/form';
+import Select from 'antd/lib/select';
+import Switch from 'antd/lib/switch';
+import Button from 'antd/lib/button';
+import Upload from 'antd/lib/upload';
+import InputNumber from 'antd/lib/input-number';
+import Input from 'antd/lib/input';
+import Icon from 'antd/lib/icon';
+import Tag from 'antd/lib/tag';
+import Tooltip from 'antd/lib/tooltip';
+import Card from 'antd/lib/card';
+
 import Editor from "components/Editor";
 
 const FormItem = Form.Item;

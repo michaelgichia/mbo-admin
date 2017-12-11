@@ -6,16 +6,19 @@
 
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
-import {
-  Table,
-  Button,
-  Input,
-  message,
-  Popconfirm,
-  Divider,
-  Card,
-  Select
-} from "antd";
+import Table from 'antd/lib/table';
+import Select from 'antd/lib/select';
+import Popconfirm from 'antd/lib/popconfirm';
+import Button from 'antd/lib/button';
+import Divider from 'antd/lib/divider';
+import Input from 'antd/lib/input';
+import Card from 'antd/lib/card';
+
+
+// import InputNumber from 'antd/lib/input-number';
+// import Icon from 'antd/lib/icon';
+// import Tag from 'antd/lib/tag';
+// import Tooltip from 'antd/lib/tooltip';
 import styles from "./styles.less";
 
 const Option = Select.Option;

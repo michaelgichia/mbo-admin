@@ -7,7 +7,11 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
 import { Link, browserHistory } from "react-router";
-import { Layout, Menu, Icon, Button } from "antd";
+import Layout from 'antd/lib/layout';
+import Menu from 'antd/lib/menu';
+import Icon from 'antd/lib/icon';
+import Button from 'antd/lib/button';
+
 import "!!style-loader!css-loader!./SidebarNavigation.css";
 
 const { Header, Sider, Content } = Layout;
@@ -52,6 +56,11 @@ export class SidebarNavigation extends React.Component {
             <Menu.Item key="6">
               <button onClick={() => browserHistory.push("/category")}>
                 <Icon type="appstore" />Category
+              </button>
+            </Menu.Item>
+            <Menu.Item key="23">
+              <button onClick={() => browserHistory.push("/subcategory")}>
+                <Icon type="shop" />Sub-Category
               </button>
             </Menu.Item>
             <SubMenu

@@ -5,7 +5,9 @@
  */
 
 import React, { PropTypes } from "react";
-import { Icon, Tooltip, Card } from "antd";
+import Icon from 'antd/lib/icon';
+import Tooltip from 'antd/lib/tooltip';
+import Card from 'antd/lib/card';
 import { connect } from "react-redux";
 import RecentUsers from "containers/RecentUsers";
 import RecentTransactions from "containers/RecentTransactions";

@@ -6,16 +6,12 @@
 
 import React, { PropTypes } from 'react';
 import { compose } from "redux";
-import { connect } from "react-redux";
-import {
-  Upload,
-  Icon,
-  message,
-  Card,
-  Form,
-  Input,
-  Button
-} from "antd";
+import Upload from 'antd/lib/upload';
+import message from 'antd/lib/message';
+import Card from 'antd/lib/card';
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
+import Button from 'antd/lib/button';
 import "!!style-loader!css-loader!./Edit.css";
 
 const FormItem = Form.Item;

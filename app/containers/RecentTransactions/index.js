@@ -6,7 +6,9 @@
 
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
-import { Table, Button, Card } from "antd";
+import Table from 'antd/lib/table';
+import Button from 'antd/lib/button';
+import Card from 'antd/lib/card';
 import "!!style-loader!css-loader!./RecentTransactions.css"
 // import { defaultAction } from './actions';
 
@@ -117,9 +119,9 @@ export class RecentTransactions extends React.Component {
               </p>
             </div>
           <div className="table-operations">
-            <Button onClick={this.setPriceSort}>Sort by date </Button>
-            <Button onClick={this.clearFilters}>Clear filters</Button>
-            <Button onClick={this.clearAll}>Clear filters and sorters</Button>
+            <Button size="large" onClick={this.setPriceSort}>Sort by date </Button>
+            <Button size="large" onClick={this.clearFilters}>Clear filters</Button>
+            <Button size="large" onClick={this.clearAll}>Clear filters and sorters</Button>
           </div>
           <Table
             columns={columns}

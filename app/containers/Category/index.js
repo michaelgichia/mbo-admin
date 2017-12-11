@@ -6,16 +6,14 @@
 
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
-import {
-  Table,
-  Button,
-  Input,
-  message,
-  Popconfirm,
-  Divider,
-  Card,
-  Select
-} from "antd";
+import Table from 'antd/lib/table';
+import Button from 'antd/lib/button';
+import Input from 'antd/lib/input';
+import message from 'antd/lib/message';
+import Popconfirm from 'antd/lib/popconfirm';
+import Divider from 'antd/lib/divider';
+import Card from 'antd/lib/card';
+import Select from 'antd/lib/select';
 import styles from "./styles.less";
 // import "!!style-loader!css-loader!./Create"
 
@@ -267,7 +265,7 @@ export class Category extends React.Component {
     return (
       <div>
         <div style={{marginBottom: 32}}>
-          <Card title="Category Page">
+          <Card title="Category Page" bordered={false}>
             <div
               style={{
                 fontSize: 16,
@@ -280,22 +278,24 @@ export class Category extends React.Component {
           </Card>
         </div>
 
-        <div style={{backgroundColor: "#fff", padding: "24px"}}>
+        <div style={{backgroundColor: "#fff", padding: "50px 24px"}}>
         <div className="search-wrap">
           <Search
             placeholder="Filter categories by name"
             onSearch={value => console.log(value)}
+            size="large"
           />
           <Select
             defaultValue="false"
             style={{ width: 150 }}
             onChange={this.handleSelectChange}
+            size="large"
           >
             <Option value="true">True</Option>
             <Option value="false">False</Option>
           </Select>
-          <Button type="primary" icon="search">Search</Button>
-          <Button>Clear</Button>
+          <Button size="large" type="primary" icon="search">Search</Button>
+          <Button size="large">Clear</Button>
         </div>
         <Table
           columns={columns}
@@ -309,6 +309,7 @@ export class Category extends React.Component {
           type="dashed"
           onClick={this.newMember}
           icon="plus"
+          size="large"
         >
           Add Category
         </Button>

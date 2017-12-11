@@ -6,7 +6,8 @@
 
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
-import { Table, Card } from "antd";
+import Table from 'antd/lib/table';
+import Card from 'antd/lib/card';
 import reqwest from "reqwest";
 // import "!!style-loader!css-loader!./RecentUsers"
 

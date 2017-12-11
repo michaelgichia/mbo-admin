@@ -5,15 +5,14 @@
  */
 
 import React, { PropTypes } from "react";
-import {
-  Form,
-  Card,
-  Select,
-  List,
-  Icon,
-  Input,
-  Button
-} from "antd";
+import Select from 'antd/lib/select';
+import message from 'antd/lib/message';
+import Card from 'antd/lib/card';
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
+import Button from 'antd/lib/button';
+import Icon from 'antd/lib/icon';
+import List from 'antd/lib/list';
 import { connect } from "react-redux";
 import shortid from "shortid";
 import styles from "./styles.less";

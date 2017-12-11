@@ -8,14 +8,13 @@ import React, { PropTypes } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { Link } from "react-router";
-import {
-  Form,
-  Input,
-  Tooltip,
-  Icon,
-  Checkbox,
-  Button,
-} from "antd";
+import Form from 'antd/lib/form';
+import Input from 'antd/lib/input';
+import Tooltip from 'antd/lib/tooltip';
+import Icon from 'antd/lib/icon';
+import Checkbox from 'antd/lib/checkbox';
+import Button from 'antd/lib/button';
+
 import "!!style-loader!css-loader!./Register.css";
 
 const FormItem = Form.Item;
