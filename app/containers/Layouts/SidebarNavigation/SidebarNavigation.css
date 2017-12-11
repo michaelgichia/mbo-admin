@@ -49,3 +49,8 @@
 .ant-menu-inline .ant-menu-item {
   font-size: 16px !important;
  }
+
+ .ant-menu-item > button {
+  border: none;
+  outline: none;
+ }

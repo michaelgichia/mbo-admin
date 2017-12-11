@@ -267,7 +267,7 @@ export class SubCategory extends React.Component {
     return (
       <div>
         <div style={{ marginBottom: 32 }}>
-          <Card title="Sub-Category Page">
+          <Card title="Sub-Category Page"   bordered={false}>
             <div
               style={{
                 fontSize: 16,
@@ -288,19 +288,21 @@ export class SubCategory extends React.Component {
             <Search
               placeholder="Filter categories by name"
               onSearch={value => console.log(value)}
+              size="large"
             />
             <Select
               defaultValue="false"
               style={{ width: 150 }}
               onChange={this.handleSelectChange}
+               size="large"
             >
               <Option value="true">True</Option>
               <Option value="false">False</Option>
             </Select>
-            <Button type="primary" icon="search">
+            <Button  size="large" type="primary" icon="search">
               Search
             </Button>
-            <Button>Clear</Button>
+            <Button  size="large">Clear</Button>
           </div>
           <Table
             columns={columns}
@@ -314,6 +316,7 @@ export class SubCategory extends React.Component {
             type="dashed"
             onClick={this.newMember}
             icon="plus"
+            size="large"
           >
             Add Sub-Category
           </Button>

@@ -7,7 +7,7 @@
 import React, { PropTypes } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { Link } from "react-router";
+import { Link, browserHistory } from "react-router";
 import Form from 'antd/lib/form';
 import Icon from 'antd/lib/icon';
 import Input from 'antd/lib/input';
@@ -24,6 +24,7 @@ export class Login extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        browserHistory.push('/dashboard');
       }
     });
   };

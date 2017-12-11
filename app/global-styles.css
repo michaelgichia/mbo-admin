@@ -38,12 +38,17 @@ ul, p {
   width: 110px !important;
 }
 
+.ant-btn-lg,
+.ant-btn-md,
+.ant-btn-sm,
+.ant-input,
 .ant-card,
 .ant-form-item,
 .ant-form-item-control > *,
 .ant-form label {
   font-size: 16px !important;
 }
+
 
 .ant-table {
   font-size: 15px !important;

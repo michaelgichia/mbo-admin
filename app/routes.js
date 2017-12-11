@@ -37,7 +37,6 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: "/stores",
       component: SidebarNavigation,
       childRoutes: [
         {

@@ -47,9 +47,9 @@ export class SidebarNavigation extends React.Component {
               <h1>MBO ADMIN</h1>
             </Link>
           </div>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+          <Menu theme="dark" mode="inline" subMenuOpenDelay={.5}defaultSelectedKeys={["21"]} onClick={() => console.log('menu clicked')}>
             <Menu.Item key="21">
-              <button onClick={() => browserHistory.push("/stores/dashboard")}>
+              <button onClick={() => browserHistory.push("/dashboard")}>
                 <Icon type="dashboard" />Dashboard
               </button>
             </Menu.Item>
