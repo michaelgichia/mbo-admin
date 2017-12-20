@@ -136,7 +136,6 @@ export class View extends React.Component {
               pagination={pagination}
               renderItem={item => (
                 <Card
-                  style={{ width: 300 }}
                   cover={
                     <img
                       alt="example"
