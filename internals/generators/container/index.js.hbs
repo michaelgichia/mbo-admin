@@ -6,7 +6,6 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-// import "!!style-loader!css-loader!./{{ properCase name }}"
 {{#if wantHeaders}}
 import Helmet from 'react-helmet';
 {{/if}}
@@ -14,7 +13,8 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 {{/if}}
 {{#if wantActionsAndReducer}}
-import { defaultAction } from './actions';
+import { createStructuredSelector } from 'reselect';
+import makeSelect{{properCase name}} from './selectors';
 {{/if}}
 {{#if wantMessages}}
 import messages from './messages';
@@ -41,18 +41,20 @@ export class {{ properCase name }} extends React.{{{ component }}} { // eslint-d
 }
 
 {{ properCase name }}.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 {{#if wantActionsAndReducer}}
-const mapStateToProps = ({}) => ({
-
+const mapStateToProps = createStructuredSelector({
+  {{name}}: makeSelect{{properCase name}}(),
 });
 {{/if}}
 
-const mapDispatchToProps = dispatch => ({
-  dispatch
-})
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
 
 {{#if wantActionsAndReducer}}
 export default connect(mapStateToProps, mapDispatchToProps)({{ properCase name }});
