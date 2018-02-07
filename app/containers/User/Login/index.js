@@ -4,26 +4,26 @@
  *
  */
 
-import React, { PropTypes } from "react";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { Link, browserHistory } from "react-router";
+import React, { PropTypes } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Link, browserHistory } from 'react-router';
 import Form from 'antd/lib/form';
 import Icon from 'antd/lib/icon';
 import Input from 'antd/lib/input';
 import Button from 'antd/lib/button';
 import Checkbox from 'antd/lib/checkbox';
 
-import "!!style-loader!css-loader!./login.css";
+import '!!style-loader!css-loader!./login.css';
 
 const FormItem = Form.Item;
 
 export class Login extends React.Component {
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log("Received values of form: ", values);
+        console.log('Received values of form: ', values);
         browserHistory.push('/dashboard');
       }
     });
@@ -44,40 +44,43 @@ export class Login extends React.Component {
         <div className="login-main">
           <Form onSubmit={this.handleSubmit} className="login-form">
             <FormItem>
-              {getFieldDecorator("userName", {
+              {getFieldDecorator('userName', {
                 rules: [
-                  { required: true, message: "Please input your username!" }
-                ]
+                  { required: true, message: 'Please input your username!' },
+                ],
               })(
                 <Input
                   size="large"
                   prefix={
-                    <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
+                    <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
-                  placeholder="Username"
+                  placeholder="Username (use demo)"
                 />
               )}
             </FormItem>
             <FormItem>
-              {getFieldDecorator("password", {
+              {getFieldDecorator('password', {
                 rules: [
-                  { required: true, message: "Please input your Password!" }
-                ]
+                  {
+                    required: true,
+                    message: 'Please input your Password!',
+                  },
+                ],
               })(
                 <Input
                   size="large"
                   prefix={
-                    <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
+                    <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
                   }
                   type="password"
-                  placeholder="Password"
+                  placeholder="Password (use demo)"
                 />
               )}
             </FormItem>
             <FormItem>
-              {getFieldDecorator("remember", {
-                valuePropName: "checked",
-                initialValue: true
+              {getFieldDecorator('remember', {
+                valuePropName: 'checked',
+                initialValue: true,
               })(<Checkbox>Remember me</Checkbox>)}
               <Link className="login-form-forgot" href="">
                 Forgot password
@@ -104,6 +107,6 @@ Login.propTypes = {
 };
 
 export default compose(
-  connect(state => ({ login: state.login })),
+  connect((state) => ({ login: state.login })),
   Form.create()
 )(Login);
